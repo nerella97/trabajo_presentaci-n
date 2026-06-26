@@ -40,14 +40,21 @@ def load_styles():
     header[data-testid="stHeader"]::before {
         content: "Simulación HMI / SCADA - Semáforos Inteligentes";
         position: fixed;
-        top: 13px;
-        left: 56px;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: max-content;
+        max-width: calc(100vw - 160px);
+
         color: #EAF6FF;
         font-size: 24px;
         font-weight: 950;
         letter-spacing: 0.2px;
         line-height: 1.2;
         z-index: 999999;
+        text-align: center;
+
         pointer-events: none;
         text-shadow: 0 0 12px rgba(125, 255, 240, 0.12);
     }
@@ -91,7 +98,7 @@ def load_styles():
 
     .block-container,
     [data-testid="stMainBlockContainer"] {
-        padding-top: 2rem !important;
+        padding-top: 4.1rem !important;
         padding-bottom: 1rem !important;
 
         padding-left: 0.15rem !important;
@@ -202,7 +209,9 @@ def load_styles():
 
     /* El título ahora está en el header */
     .main-title {
-        display: none !important;
+        display: block !important;
+        text-align: right;
+        padding-right:40px;
     }
 
     .subtitle {
@@ -363,7 +372,29 @@ def load_styles():
         }
     }
 
+    .sensor-window {
+    background: linear-gradient(180deg, #0D1B2E 0%, #08111F 100%);
+    border: 1px solid rgba(82, 190, 255, 0.35);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 18px rgba(0, 180, 255, 0.12);
+}
+
+.sensor-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #EAF6FF;
+    margin-bottom: 4px;
+}
+
+.sensor-subtitle {
+    font-size: 0.78rem;
+    color: #8FB8D8;
+}
+
 </style>
         """,
         unsafe_allow_html=True
     )
+    

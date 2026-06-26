@@ -1,7 +1,7 @@
 import streamlit.components.v1 as components
 
 
-def render_scada_panel(velocidad_live: int, flujo_live: int, cola_live: int):
+def render_scada_panel():
     scada_html = f"""
     <!DOCTYPE html>
     <html>
@@ -65,30 +65,7 @@ def render_scada_panel(velocidad_live: int, flujo_live: int, cola_live: int):
             width: 100%;
             height: calc(100% - 46px);
         }}
-
-        .metric-strip {{
-            position: absolute;
-            left: 24px;
-            right: 24px;
-            bottom: 20px;
-            height: 44px;
-            background: rgba(2,10,18,0.72);
-            border: 1px solid rgba(125,255,240,0.22);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 34px;
-            color: #A9C8D8;
-            font-size: 13px;
-            z-index: 10;
-            backdrop-filter: blur(4px);
-        }}
-
-        .metric-strip span {{
-            color: #7DFFF0;
-            font-weight: 900;
-        }}
+        
     </style>
     </head>
 
@@ -99,13 +76,7 @@ def render_scada_panel(velocidad_live: int, flujo_live: int, cola_live: int):
                 <div id="statusText" class="status">● Inicializando simulación</div>
             </div>
 
-            <canvas id="trafficCanvas"></canvas>
-
-            <div class="metric-strip">
-                <div>Velocidad: <span>{velocidad_live} km/h</span></div>
-                <div>Flujo: <span>{flujo_live} veh/min</span></div>
-                <div>Cola: <span>{cola_live} m</span></div>
-            </div>
+            <canvas id="trafficCanvas"></canvas>         
         </div>
 
 <script>
@@ -381,8 +352,8 @@ def render_scada_panel(velocidad_live: int, flujo_live: int, cola_live: int):
 
         ctx.fillStyle = "#FFB3B3";
         ctx.font = "12px Arial";
-        ctx.fillText("Cola vertical: {cola_live} m", g.cx + 115, g.cy + 148);
-        ctx.fillText("Cola horizontal: flujo alto", g.cx + 325, roadH.y - 8);
+        ctx.fillText("Cola vertical", g.cx + 115, g.cy + 148);
+        ctx.fillText("Cola horizontal", g.cx + 325, roadH.y - 8);
     }}
 
     function drawTrafficLight(x, y, active) {{
