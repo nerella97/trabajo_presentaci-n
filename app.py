@@ -15,9 +15,9 @@ from pages_app.control import render_control
 
 
 st.set_page_config(
-    page_title="Simulación HMI/SCADA - Semáforos Inteligentes",
-    page_icon="🚦",
-    layout="wide"
+    page_title="Simulación SCADA",
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
 load_styles()
@@ -49,10 +49,6 @@ st.sidebar.markdown("- Cámara de visión artificial")
 
 st.markdown(
     '<div class="main-title">Simulación HMI / SCADA - Semáforos Inteligentes</div>',
-    unsafe_allow_html=True
-)
-st.markdown(
-    '<div class="subtitle">Representación académica de sensores, variables físicas, procesamiento de datos e intervención semafórica.</div>',
     unsafe_allow_html=True
 )
 

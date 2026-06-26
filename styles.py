@@ -5,27 +5,208 @@ def load_styles():
     st.markdown(
         """
 <style>
-    .stApp {
-        background: #07111F;
-        color: #EAF6FF;
+    /* =========================
+       FONDO GENERAL
+    ========================= */
+
+    html, body, .stApp {
+        background: #07111F !important;
+        color: #EAF6FF !important;
+        overflow-x: hidden !important;
     }
+
+    [data-testid="stAppViewContainer"],
+    [data-testid="stMain"],
+    .main {
+        background: #07111F !important;
+        overflow-x: hidden !important;
+    }
+
+    /* =========================
+       HEADER SUPERIOR VISIBLE
+    ========================= */
+
+    header[data-testid="stHeader"] {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: 56px !important;
+        background: linear-gradient(90deg, #06101D, #0B1F33) !important;
+        border-bottom: 1px solid rgba(125, 255, 240, 0.22) !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24) !important;
+        z-index: 999999 !important;
+    }
+
+    header[data-testid="stHeader"]::before {
+        content: "Simulación HMI / SCADA - Semáforos Inteligentes";
+        position: fixed;
+        top: 13px;
+        left: 56px;
+        color: #EAF6FF;
+        font-size: 24px;
+        font-weight: 950;
+        letter-spacing: 0.2px;
+        line-height: 1.2;
+        z-index: 999999;
+        pointer-events: none;
+        text-shadow: 0 0 12px rgba(125, 255, 240, 0.12);
+    }
+
+    /* No ocultar controles del header */
+    header[data-testid="stHeader"] button,
+    header[data-testid="stHeader"] svg,
+    button[data-testid="stBaseButton-headerNoPadding"],
+    button[kind="headerNoPadding"] {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #7DFFF0 !important;
+        fill: #7DFFF0 !important;
+        z-index: 1000000 !important;
+    }
+
+    /* Ocultar solo decoración inferior/superior innecesaria */
+    div[data-testid="stDecoration"],
+    footer {
+        display: none !important;
+    }
+
+    /* =========================
+       CONTENIDO PRINCIPAL PEGADO A LA IZQUIERDA
+    ========================= */
+
+    [data-testid="stMain"] {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    [data-testid="stAppViewContainer"] {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+        overflow-x: hidden !important;
+    }
+
+    .block-container,
+    [data-testid="stMainBlockContainer"] {
+        padding-top: 2rem !important;
+        padding-bottom: 1rem !important;
+
+        padding-left: 0.15rem !important;
+        padding-right: 0.45rem !important;
+
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+
+        max-width: 100% !important;
+        width: 100% !important;
+
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+    }
+
+    main .block-container {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0.15rem !important;
+    }
+
+    iframe {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* =========================
+       SIDEBAR NATIVO
+       NO FORZADO, PARA QUE EL BOTÓN FUNCIONE
+    ========================= */
 
     section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #06101D, #0B1F33);
-        border-right: 1px solid rgba(80, 255, 220, 0.18);
+        background: linear-gradient(180deg, #06101D, #0B1F33) !important;
+        border-right: 1px solid rgba(80, 255, 220, 0.25) !important;
+        z-index: 999998 !important;
     }
 
+    section[data-testid="stSidebar"] > div {
+        background: linear-gradient(180deg, #06101D, #0B1F33) !important;
+        padding-top: 0.25rem !important;
+        padding-left: 0.8rem !important;
+        padding-right: 0.8rem !important;
+    }
+
+    section[data-testid="stSidebarContent"] {
+        padding-top: 0rem !important;
+        margin-top: 0rem !important;
+        background: transparent !important;
+    }
+
+    section[data-testid="stSidebar"] .block-container {
+        padding-top: 0.25rem !important;
+        padding-left: 0.6rem !important;
+        padding-right: 0.6rem !important;
+    }
+
+    section[data-testid="stSidebar"] * {
+        color: #EAF6FF !important;
+    }
+
+    section[data-testid="stSidebar"] h1,
+    section[data-testid="stSidebar"] h2,
+    section[data-testid="stSidebar"] h3,
+    section[data-testid="stSidebar"] h4 {
+        color: #7DFFF0 !important;
+        font-weight: 900 !important;
+    }
+
+    section[data-testid="stSidebar"] p {
+        color: #BFD7E8 !important;
+    }
+
+    section[data-testid="stSidebar"] label {
+        font-weight: 800 !important;
+        font-size: 14px !important;
+    }
+
+    section[data-testid="stSidebar"] div[role="radiogroup"] label {
+        color: #EAF6FF !important;
+        font-weight: 850 !important;
+        padding: 5px 0px !important;
+    }
+
+    section[data-testid="stSidebar"] div[role="radiogroup"] label:hover {
+        color: #7DFFF0 !important;
+    }
+
+    section[data-testid="stSidebar"] svg {
+        color: #7DFFF0 !important;
+        fill: #7DFFF0 !important;
+    }
+
+    section[data-testid="stSidebar"] hr {
+        border-color: rgba(125, 255, 240, 0.22) !important;
+    }
+
+    /* =========================
+       TEXTOS GENERALES
+    ========================= */
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #EAF6FF !important;
+    }
+
+    p, span, label {
+        color: #A9C8D8;
+    }
+
+    /* El título ahora está en el header */
     .main-title {
-        font-size: 34px;
-        font-weight: 900;
-        color: #EAF6FF;
-        margin-bottom: 4px;
+        display: none !important;
     }
 
     .subtitle {
-        font-size: 16px;
-        color: #9EBBD0;
-        margin-bottom: 22px;
+        display: none !important;
     }
 
     .section-title {
@@ -35,6 +216,10 @@ def load_styles():
         margin-top: 10px;
         margin-bottom: 16px;
     }
+
+    /* =========================
+       TARJETAS
+    ========================= */
 
     .card {
         background: linear-gradient(145deg, #0B1E32, #0D2B3A);
@@ -78,6 +263,10 @@ def load_styles():
         color: #FF6B6B;
         font-weight: 800;
     }
+
+    /* =========================
+       BLOQUES TIPO TERMINAL / CÓDIGO
+    ========================= */
 
     .terminal {
         background: #020A12;
@@ -155,6 +344,25 @@ def load_styles():
         font-weight: 800;
         color: #7DFFF0;
     }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+        header[data-testid="stHeader"]::before {
+            font-size: 18px;
+            left: 54px;
+            top: 16px;
+        }
+
+        .block-container,
+        [data-testid="stMainBlockContainer"] {
+            padding-left: 0.15rem !important;
+            padding-right: 0.25rem !important;
+        }
+    }
+
 </style>
         """,
         unsafe_allow_html=True
