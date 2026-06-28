@@ -5,7 +5,7 @@ from components.code_window import code_window
 
 def render_seleccion(data):
     st.markdown(
-        '<div class="section-title">3. Selección de variables relevantes</div>',
+        '<div class="section-title">4. Selección de variables relevantes</div>',
         unsafe_allow_html=True
     )
 

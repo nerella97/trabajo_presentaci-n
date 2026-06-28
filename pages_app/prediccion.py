@@ -5,7 +5,7 @@ from components.code_window import code_window
 
 def render_prediccion(modelo):
     st.markdown(
-        '<div class="section-title">6. Predicción en tiempo real</div>',
+        '<div class="section-title">7. Predicción en tiempo real</div>',
         unsafe_allow_html=True
     )
 

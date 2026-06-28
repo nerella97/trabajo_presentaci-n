@@ -6,7 +6,7 @@ from model import get_tiempo_verde
 
 def render_control(modelo):
     st.markdown(
-        '<div class="section-title">7. Control semafórico</div>',
+        '<div class="section-title">8. Control semafórico</div>',
         unsafe_allow_html=True
     )
 

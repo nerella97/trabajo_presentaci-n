@@ -209,10 +209,8 @@ def load_styles():
 
     /* El título ahora está en el header */
     .main-title {
-        display: block !important;
-        text-align: right;
-        padding-right:40px;
-    }
+        display: none !important;
+            }
 
     .subtitle {
         display: none !important;
@@ -391,6 +389,132 @@ def load_styles():
 .sensor-subtitle {
     font-size: 0.78rem;
     color: #8FB8D8;
+}
+
+/* =========================
+   LIMPIEZA DE DATOS
+========================= */
+
+.section-card {
+    background: rgba(15, 30, 50, 0.92);
+    border: 1px solid rgba(100, 180, 255, 0.22);
+    border-radius: 18px;
+    padding: 18px 22px;
+    margin-bottom: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+}
+
+.section-card h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.45rem;
+    color: #EAF6FF;
+}
+
+.section-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #BFD7EA;
+}
+
+.notebook-box {
+    background: #0B1220;
+    border: 1px solid rgba(120, 160, 210, 0.25);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 22px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+}
+
+.notebook-header {
+    background: #111827;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.circle {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.red {
+    background: #ff5f57;
+}
+
+.yellow {
+    background: #ffbd2e;
+}
+
+.green {
+    background: #28c840;
+}
+
+.notebook-title {
+    margin-left: 10px;
+    font-size: 0.82rem;
+    color: #CBD5E1;
+}
+
+.notebook-box pre {
+    margin: 0;
+    padding: 12px 14px;
+    overflow-x: auto;
+    background: #0B1220;
+}
+
+.notebook-box code {
+    font-size: 0.68rem;
+    line-height: 1.45;
+    color: #DDEBFF;
+    font-family: Consolas, Monaco, "Courier New", monospace;
+    white-space: pre;
+}
+
+.terminal-box {
+    background: #050A12;
+    border: 1px solid rgba(90, 180, 120, 0.28);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin: 14px 0 22px 0;
+    font-family: Consolas, Monaco, "Courier New", monospace;
+    box-shadow: inset 0 0 18px rgba(0,0,0,0.4);
+}
+
+.terminal-box p {
+    margin: 4px 0;
+    font-size: 0.82rem;
+    color: #CFE8D6;
+}
+
+.success-text {
+    color: #6EE7A8 !important;
+    font-weight: 700;
+}
+
+.comment-box {
+    background: rgba(8, 20, 35, 0.92);
+    border-left: 4px solid #38BDF8;
+    border-radius: 12px;
+    padding: 15px 18px;
+    margin-top: 18px;
+}
+
+.comment-box h4 {
+    margin: 0 0 8px 0;
+    color: #EAF6FF;
+    font-size: 1rem;
+}
+
+.comment-box p {
+    margin: 0;
+    color: #C7D7E8;
+    font-size: 0.92rem;
+    line-height: 1.5;
 }
 
 </style>

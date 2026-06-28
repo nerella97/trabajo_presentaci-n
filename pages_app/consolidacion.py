@@ -5,7 +5,7 @@ from components.code_window import code_window
 
 def render_consolidacion(data):
     st.markdown(
-        '<div class="section-title">4. Consolidación de DataFrames</div>',
+        '<div class="section-title">5. Consolidación de DataFrames</div>',
         unsafe_allow_html=True
     )
 

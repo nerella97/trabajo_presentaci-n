@@ -5,7 +5,7 @@ from components.code_window import code_window
 
 def render_modelo(X, y):
     st.markdown(
-        '<div class="section-title">5. Entrenamiento del modelo IA</div>',
+        '<div class="section-title">6. Entrenamiento del modelo IA</div>',
         unsafe_allow_html=True
     )
 
