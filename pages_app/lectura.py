@@ -137,7 +137,43 @@ def _init_camara() -> pd.DataFrame:
 # ── Render ─────────────────────────────────────────────────────────────────────
 
 def render_lectura(data=None):
-    st_autorefresh(interval=2500, key="refresh_lectura_datos_crudos")
+    st.markdown(
+        """
+        <style>
+            div[data-testid="stMainBlockContainer"] {
+                padding-top: 0rem !important;
+            }
+            .titulo-lectura {
+                margin-top: 0 !important;
+                margin-bottom: 2px !important;
+                padding-top: 0 !important;
+                font-size: 34px !important;
+                font-weight: 900 !important;
+                line-height: 1.1 !important;
+                color: #EAF6FF !important;
+            }
+            .desc-lectura {
+                margin-top: 0 !important;
+                margin-bottom: 6px !important;
+                font-size: 12.5px !important;
+                color: #8fa8be !important;
+                line-height: 1.45 !important;
+            }
+            .hr-lectura {
+                margin-top: 6px !important;
+                margin-bottom: 4px !important;
+                border: none !important;
+                border-top: 1px solid #2a4060 !important;
+            }
+            div[data-testid="stMetric"] {
+                padding-top: 2px !important;
+                padding-bottom: 2px !important;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    st_autorefresh(interval=500, key="refresh_lectura_datos_crudos")
 
     # ── Inicialización de session_state ────────────────────────────────────────
     if "df_radar_live" not in st.session_state:
@@ -177,18 +213,12 @@ def render_lectura(data=None):
     )
     st.session_state["camara_next_item"] += 1
 
-    # ── Encabezado ─────────────────────────────────────────────────────────────
-    st.markdown("## 2. Lectura de datos crudos")
-
+    # ── Encabezado compacto ─────────────────────────────────────────────────────
     st.markdown(
         """
-        En esta etapa se visualiza la entrada directa de datos desde los sensores hacia
-        el sistema. Los valores todavía no han sido limpiados, seleccionados ni
-        transformados. Cada actualización incorpora una nueva lectura al final de la tabla
-        y conserva solo las últimas 15 observaciones, como una ventana móvil de monitoreo.
-        Para fines demostrativos, las lecturas se generan automáticamente a partir del
-        escenario SCADA.
-        """
+        <div class='titulo-lectura'>2. Datos de sensores</div>
+        """,
+        unsafe_allow_html=True,
     )
 
     df_radar = st.session_state["df_radar_live"]
@@ -206,12 +236,7 @@ def render_lectura(data=None):
     col_m3.metric("Lecturas cámara", camara_total)
     col_m4.metric("Total lecturas", total_lecturas)
 
-    st.caption(
-        "Las tablas muestran una ventana móvil con las últimas 15 lecturas por sensor. "
-        "El conteo superior corresponde al total de lecturas acumuladas durante la sesión."
-    )
-
-    st.markdown("---")
+    st.markdown("<hr class='hr-lectura'>", unsafe_allow_html=True)
 
     st.markdown(
         """
@@ -249,12 +274,3 @@ def render_lectura(data=None):
         unsafe_allow_html=True,
     )
     st.dataframe(df_camara, width="stretch", hide_index=True, height=350)
-
-    st.markdown(
-        """
-        Los datos mostrados corresponden a señales crudas recibidas desde los sensores del
-        sistema SCADA. En las siguientes etapas, el sistema eliminará registros inválidos,
-        seleccionará las variables útiles y calculará los indicadores principales:
-        velocidad promedio, flujo vehicular y longitud de cola.
-        """
-    )

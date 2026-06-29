@@ -101,8 +101,8 @@ def load_styles():
         padding-top: 4.1rem !important;
         padding-bottom: 1rem !important;
 
-        padding-left: 0.15rem !important;
-        padding-right: 0.45rem !important;
+        padding-left: 1.35rem !important;
+        padding-right: 0.75rem !important;
 
         margin-left: 0 !important;
         margin-right: 0 !important;
@@ -117,7 +117,7 @@ def load_styles():
     main .block-container {
         margin-left: 0 !important;
         margin-right: 0 !important;
-        padding-left: 0.15rem !important;
+        padding-left: 1.35rem !important;
     }
 
     iframe {
@@ -477,7 +477,7 @@ def load_styles():
 
 .terminal-box {
     background: #050A12;
-    border: 1px solid rgba(90, 180, 120, 0.28);
+    border: 1px solid rgba(110, 231, 168, 0.32);
     border-radius: 14px;
     padding: 16px 18px;
     margin: 14px 0 22px 0;
@@ -517,8 +517,138 @@ def load_styles():
     line-height: 1.5;
 }
 
+/* =========================
+   NOTEBOOK REAL - LIMPIEZA
+   estilo tipo editor oscuro
+========================= */
+
+.notebook-real-window {
+    background: #111314;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 0px;
+    overflow: hidden;
+    margin: 12px 0 22px 0;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
+    max-width: 680px;
+}
+
+.notebook-real-header {
+    height: 28px;
+    background: #171A1C;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: grid;
+    grid-template-columns: 90px 1fr 90px;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.notebook-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.dot-red,
+.dot-yellow,
+.dot-green {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-red {
+    background: #ff5f57;
+}
+
+.dot-yellow {
+    background: #ffbd2e;
+}
+
+.dot-green {
+    background: #28c840;
+}
+
+.notebook-file-title {
+    text-align: center;
+    color: #A9B7C6;
+    font-size: 0.72rem;
+    font-weight: 500;
+    font-family: Consolas, Monaco, "Courier New", monospace;
+}
+
+.notebook-status {
+    text-align: right;
+    color: #6EE7A8;
+    font-size: 0.64rem;
+    font-weight: 500;
+    font-family: Consolas, Monaco, "Courier New", monospace;
+}
+
+.notebook-cell-label {
+    display: none;
+}
+
+.notebook-code {
+    margin: 0;
+    padding: 14px 16px;
+    background: #111314;
+    color: #58A6FF;
+    overflow-x: auto;
+    white-space: pre;
+    line-height: 1.28;
+    font-size: 0.78rem;
+    font-family: Consolas, Monaco, "Courier New", monospace;
+}
+
+.notebook-code code {
+    color: #58A6FF;
+    font-size: 0.78rem;
+    font-family: Consolas, Monaco, "Courier New", monospace;
+}
+
+/* Mejorar consola de ejecución */
+.terminal-box {
+    background: #050A12;
+    border: 1px solid rgba(110, 231, 168, 0.32);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin: 14px 0 22px 0;
+    font-family: Consolas, Monaco, "Courier New", monospace;
+    box-shadow: inset 0 0 18px rgba(0,0,0,0.45);
+}
+
+.terminal-box p {
+    margin: 4px 0;
+    font-size: 0.82rem;
+    color: #CFE8D6;
+}
+
+.success-text {
+    color: #6EE7A8 !important;
+    font-weight: 800;
+}
+
+/* Reducir espacios de la salida de ejecución */
+
+
+.terminal-box pre{
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.35 !important;
+}
+
+.terminal-box p{
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.35 !important;
+}
+
+.terminal-box br{
+    line-height: 1.35 !important;
+}
 </style>
         """,
         unsafe_allow_html=True
     )
-    
+

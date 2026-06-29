@@ -1,7 +1,11 @@
+import streamlit as st
 import streamlit.components.v1 as components
 
 
-def render_scada_panel():
+def render_scada_panel(velocidad_live=None, flujo_live=None, cola_live=None):
+    if velocidad_live is None: velocidad_live = 0
+    if flujo_live is None: flujo_live = 0
+    if cola_live is None: cola_live = 0
     scada_html = f"""
     <!DOCTYPE html>
     <html>
@@ -61,11 +65,48 @@ def render_scada_panel():
         canvas {{
             position: absolute;
             left: 0;
-            top: 46px;
+            top: 90px;
             width: 100%;
-            height: calc(100% - 46px);
+            height: calc(100% - 90px);
         }}
-        
+
+        .kpibar {{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 46px;
+            height: 44px;
+            background: rgba(2,10,18,0.82);
+            border-bottom: 1px solid rgba(125,255,240,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            padding: 0 24px;
+            z-index: 9;
+            box-sizing: border-box;
+        }}
+
+        .kpi-item {{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }}
+
+        .kpi-label {{
+            color: #7DFFF0;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }}
+
+        .kpi-value {{
+            color: #FFFFFF;
+            font-size: 16px;
+            font-weight: 900;
+        }}
+
     </style>
     </head>
 
@@ -76,7 +117,22 @@ def render_scada_panel():
                 <div id="statusText" class="status">● Inicializando simulación</div>
             </div>
 
-            <canvas id="trafficCanvas"></canvas>         
+            <div class="kpibar">
+                <div class="kpi-item">
+                    <span class="kpi-label">Velocidad promedio</span>
+                    <span class="kpi-value">{velocidad_live} km/h</span>
+                </div>
+                <div class="kpi-item">
+                    <span class="kpi-label">Flujo vehicular</span>
+                    <span class="kpi-value">{flujo_live} veh/min</span>
+                </div>
+                <div class="kpi-item">
+                    <span class="kpi-label">Longitud de cola</span>
+                    <span class="kpi-value">{cola_live} m</span>
+                </div>
+            </div>
+
+            <canvas id="trafficCanvas"></canvas>
         </div>
 
 <script>
@@ -898,4 +954,8 @@ drawSensorLabel(g.cx - 430, g.cy + 292, "Cámara eje V");
     </html>
     """
 
-    components.html(scada_html, height=1050, scrolling=False)
+    try:
+        components.html(scada_html, height=1050, scrolling=False)
+    except Exception as e:
+        st.error("Error al renderizar el panel SCADA")
+        st.exception(e)
